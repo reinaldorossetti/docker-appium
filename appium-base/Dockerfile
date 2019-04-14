@@ -36,7 +36,7 @@ RUN mkdir -p -m 0750 /root/.android
 ADD files/insecure_shared_adbkey /root/.android/adbkey
 ADD files/insecure_shared_adbkey.pub /root/.android/adbkey.pub
 
-RUN echo y | /opt/android-sdk/tools/bin/sdkmanager "platforms;android-25" "build-tools;25.0.3" "platform-tools" \
+RUN echo y | /opt/android-sdk/tools/bin/sdkmanager "platforms;android-26" "build-tools;26.0.3" "platform-tools" \
   && apt-get -qqy clean \
   && rm -rf /var/cache/apt/*
 
@@ -50,7 +50,7 @@ ENV ANDROID_HOME /opt/android-sdk
 #==========================
 # Install Appium Dependencies
 #==========================
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
   && apt-get -qqy install \
     nodejs \
     python \
@@ -61,7 +61,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - \
 #=====================
 # Install Appium
 #=====================
-ENV APPIUM_VERSION 1.7.2
+ENV APPIUM_VERSION 1.10.1
 
 RUN mkdir /opt/appium \
   && cd /opt/appium \
